@@ -69,9 +69,11 @@
         <p>Wanna see a cool birthday message?</p>
         <p id="wish-text">Click the button below to generate a wish!</p>
         </div>
-        
+
         <button onclick="generateWish()">Generate Wish ✨</button>
     </div>
+
+    <audio id="party-sound" src="https://mixkit.co" preload="auto"></audio>
 
     <script>
         const wishes = [
@@ -85,6 +87,10 @@
         function generateWish() {
             const randomIndex = Math.floor(Math.random() * wishes.length);
             document.getElementById("wish-text").innerText = wishes[randomIndex];
+
+        const sound = document.getElementById("party-sound");
+        sound.currentTime= 0;
+        sound.play();
 
         confetti({
             particleCount: 150,
