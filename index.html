@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wish Generator!</title>
+
+    <script src="https://cloudflare.com"></script>
+
+    <style>
+        body {
+            font-family: 'Brush Script MT', cursive, monospace;
+            background-color: #f4ecf7;
+            text-align: center;
+            padding: 50px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+            max-width: 0 auto;
+            margin: 0 auto;
+            border: 3px solid #ec407a;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .party-image {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 2px dashed #ec407a;
+            padding: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button {
+            background-color: #ec407a;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #d81b60;
+        }
+        #wish-text {
+            font-size: 18px;
+            margin: 20px 0;
+            min-height: 50px;
+            color: #4a148c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>🎂 Birthday Wish-O-Matic 🎂</h1>
+
+        <img class = "party-image" src="https://rawr.hackclub.com/party_orpheus.png" alt="Orpheus Says Happy Birthday">
+    
+        <div class ="text-container">
+        <p>Wanna see a cool birthday message?</p>
+        <p id="wish-text">Click the button below to generate a wish!</p>
+        </div>
+        
+        <button onclick="generateWish()">Generate Wish ✨</button>
+    </div>
+
+    <script>
+        const wishes = [
+            "Happy Birthday! May your code compile on the very first try today! 🔥",
+            "Wishing you a day filled with cake, confetti, and zero merge conflicts! 🎂",
+            "Happy Birthday! May Orpheus bless your repository with endless green checkmarks 🦖",
+            "Have a fantastic birthday! May your code run with flawless perfection 🎉",
+            "Happy Birthday! May the bugs in the code be small and your stickers be plentiful! 🩷",
+        ];
+
+        function generateWish() {
+            const randomIndex = Math.floor(Math.random() * wishes.length);
+            document.getElementById("wish-text").innerText = wishes[randomIndex];
+
+        confetti({
+            particleCount: 150,
+            spread: 80,
+            origin: { y:0.6 }
+        });
+    }
+    </script>
+</body>
+</html>
