@@ -1,30 +1,30 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name ="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Wish Generator!</title>
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YSWS Birthday Wish Generator</title>
+    
     <style>
         body {
-            font-family: 'Brush Script MT', cursive, monospace;
+            font-family: 'Courier New', Courier, monospace;
             background-color: #f4ecf7;
             text-align: center;
             padding: 50px;
-            overflow-x: hidden;
         }
         .card {
             background: white;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-            max-width: 0 auto;
+            max-width: 450px;
             margin: 0 auto;
             border: 3px solid #ec407a;
-
+            
+            /* FORCE ALL CONTENT INTO A SINGLE VERTICAL COLUMN */
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: center; 
             justify-content: center;
         }
         .party-image {
@@ -34,8 +34,7 @@
             border-radius: 10px;
             border: 2px dashed #ec407a;
             padding: 10px;
-            margin-left: auto;
-            margin-right: auto;
+            background-color: #fff;
         }
         button {
             background-color: #ec407a;
@@ -47,16 +46,19 @@
             cursor: pointer;
             font-weight: bold;
             margin-top: 15px;
-            z-index: 10;
         }
         button:hover {
             background-color: #d81b60;
         }
+        .text-container {
+            width: 100%;
+            margin: 10px 0;
+        }
         #wish-text {
             font-size: 18px;
-            margin: 20px 0;
-            min-height: 50px;
             color: #4a148c;
+            font-weight: bold;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -64,30 +66,33 @@
 
     <div class="card">
         <h1>🎂 Birthday Wish-O-Matic 🎂</h1>
-
-        <img class = "party-image" src="https://rawr.hackclub.com/party_orpheus.png" alt="Orpheus Says Happy Birthday">
-    
-        <div class ="text-container">
-        <p>Wanna see a cool birthday message?</p>
-        <p id="wish-text">Click the button below to generate a wish!</p>
+        
+        <!-- The image is perfectly centered inside the column -->
+        <img class="party-image" src="https://hackclub.com" alt="Party Orpheus">
+        
+        <!-- Wrapped layout elements to strictly obey vertical stacking -->
+        <div class="text-container">
+            <p style="margin: 5px 0;">Wanna see a cool birthday message?</p>
+            <p id="wish-text">Click the button below to generate a wish!</p>
         </div>
-
+        
         <button onclick="generateWish()">Generate Wish ✨</button>
     </div>
 
     <script>
         const wishes = [
-            "Happy Birthday! May your code compile on the very first try today! 🔥",
+            "Happy Birthday! May your code compile on the very first try today! 🚀",
             "Wishing you a day filled with cake, confetti, and zero merge conflicts! 🎂",
-            "Happy Birthday! May Orpheus bless your repository with endless green checkmarks 🦖",
-            "Have a fantastic birthday! May your code run with flawless perfection 🎉",
-            "Happy Birthday! May the bugs in the code be small and your stickers be plentiful! 🩷",
+            "Happy Birthday! May Orpheus bless your repository with endless green checkmarks! 🦕",
+            "Have a fantastic birthday! Remember to log your hours for this awesome YSWS! 🎉",
+            "Happy Birthday! May your bugs be small and your stickers be plentiful! 💎"
         ];
-    function generateEverything() {
-            // Update Text content
+
+        function generateWish() {
             const randomIndex = Math.floor(Math.random() * wishes.length);
             document.getElementById("wish-text").innerText = wishes[randomIndex];
-    }
+        }
     </script>
+
 </body>
 </html>
