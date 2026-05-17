@@ -4,7 +4,7 @@
     <meta name ="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Wish Generator!</title>
 
-    <script src="https://cloudflare.com"></script>
+    <script src="https://unpkg.com"></script>
 
     <style>
         body {
@@ -73,7 +73,7 @@
         <button onclick="generateWish()">Generate Wish ✨</button>
     </div>
 
-    <audio id="party-sound" src="https://mixkit.co" preload="auto"></audio>
+    <audio id="party-sound" src="https://hackclub.com" preload="auto"></audio>
 
     <script>
         const wishes = [
@@ -89,14 +89,20 @@
             document.getElementById("wish-text").innerText = wishes[randomIndex];
 
         const sound = document.getElementById("party-sound");
-        sound.currentTime= 0;
-        sound.play();
-
-        confetti({
-            particleCount: 150,
-            spread: 80,
-            origin: { y:0.6 }
+        if (sound) {
+            sound.currentTime= 0;
+            sound.play().catch(err => console.log("Audio autoplay waiting for user interaction!"));
+        }
+        
+        try {
+            window.confetti({
+                particleCount: 150,
+                spread: 80,
+                origin: { y:0.6 }
         });
+    } catch (error) {
+        console.log("Conefetti script failed to initialize:", error);
+    }
     }
     </script>
 </body>
